@@ -453,12 +453,6 @@ template <> struct utest_type_deducer<char, false> {
   }
 };
 
-template <> struct utest_type_deducer<std::string, false> {
-  static void _(const std::string s) {
-    UTEST_PRINTF("%s", s.c_str());
-  }
-};
-
 template <> struct utest_type_deducer<signed char, false> {
   static void _(const signed char c) {
     UTEST_PRINTF("%d", static_cast<int>(c));
