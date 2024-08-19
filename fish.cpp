@@ -21,7 +21,8 @@ int Fish::width() const { return shape_.width(); }
 int Fish::height() const { return shape_.height(); }
 
 void Fish::tick() {
-  // TODO(max): This will eventually overflow
+  // TODO(max): This will eventually overflow... students, don't test
+  // overflow/wrapping behavior here.
   col_ += horizontal_speed_;
   row_ += vertical_speed_;
 }
@@ -38,6 +39,8 @@ static int wrap(int value, int max) {
 void Fish::draw(Screen *screen) const {
   for (int row = 0; row < height(); row++) {
     for (int col = 0; col < width(); col++) {
+      // TODO(max): This will eventually overflow... students, don't test
+      // overflow/wrapping behavior here.
       screen->charAtPut(wrap(this->col() + col, screen->width()),
                         wrap(this->row() + row, screen->height()),
                         shape_.charAt(col, row));
